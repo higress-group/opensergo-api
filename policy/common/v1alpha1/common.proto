@@ -1,0 +1,50 @@
+// Copyright 2023, OpenSergo Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package io.opensergo.policy.v1alpha1;
+
+option go_package = "opensergo.io/api/policy/v1alpha1";
+
+message FallbackAction {
+
+  message HTTPFallback {
+
+    message HTTPCustomResponse {
+      enum BodyEncoding {
+        TEXT = 0;
+        JSON = 1;
+      }
+      uint32 status_code = 1;
+      BodyEncoding body_encoding = 2;
+      string body = 3;
+      map<string, string> response_headers_to_add = 4;
+    }
+
+    message HTTPRedirect {
+      string redirect_url = 1;
+    }
+
+    oneof action_type {
+      HTTPCustomResponse custom_response = 1;
+      HTTPRedirect redirect = 2;
+    }
+  }
+
+  oneof fallback_type {
+    // Fallback for http
+    HTTPFallback http = 1;
+  }
+}

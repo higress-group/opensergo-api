@@ -1,0 +1,43 @@
+// Copyright 2023, OpenSergo Authors
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     https://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+syntax = "proto3";
+
+package io.opensergo.core.v1alpha1;
+
+option go_package = "opensergo.io/api/core/v1alpha1";
+
+// The combined items in every field have AND semantic.
+message Selector {
+  // OR semantic
+  // 1. When specified, it will select the matching routes for the matching workloads.
+  // 2. When omitted, a) if the data plane is gateway, it will selector all routes of matching data plane.
+  // b) if the data is sidecar of proxyless, to be discussed.
+  repeated RouteSelector routes = 1;
+
+  // OR semantic
+  // 1. When specified, it will select the matching workloads in the config namespace.
+  // 2. When omitted, it will selector all workloads in the config namespace.
+  // 3. When the config namespace is admin namespace, the above cases will extend to all namespaces.
+  repeated WorkloadSelector workloads = 2;
+}
+
+message RouteSelector {
+  // route name
+  string name = 1;
+}
+
+message WorkloadSelector {
+  map<string, string> labels = 1;
+}
