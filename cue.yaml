@@ -1,0 +1,19 @@
+# Cuelang configuration to generate OpenAPI schema for Istio configs.
+
+module: opensergo.io/api
+
+openapi:
+  selfContained: true
+  fieldFilter: "min.*|max.*"
+
+directories:
+  policy/trafficcontrol/v1alpha1:
+    - mode: perFile
+
+
+# All is used when generating all types referenced in the above directories to
+# one file.
+all:
+  title: All OpenSergo types.
+  version: v1alpha1
+  oapiFilename: opensergo.gen.json
