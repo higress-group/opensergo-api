@@ -15,7 +15,7 @@
 syntax = "proto3";
 
 import "core/v1alpha1/core.proto";
-import "policy/common/v1alpha1/common.proto";
+import "policy/v1alpha1/common.proto";
 import "policy/trafficcontrol/v1alpha1/common.proto";
 
 // $schema: io.opensergo.policy.trafficcontrol.v1alpha1.ConcurrencyLimiting
