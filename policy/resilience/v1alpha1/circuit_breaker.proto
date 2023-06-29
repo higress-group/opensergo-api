@@ -16,7 +16,62 @@ syntax = "proto3";
 
 package io.opensergo.policy.resilience.v1alpha1;
 
+import "core/v1alpha1/core.proto";
+import "policy/v1alpha1/common.proto";
+
+import "google/protobuf/duration.proto";
+
 option go_package = "opensergo.io/api/policy/resilience/v1alpha1";
 
+//
+// <!-- crd generation tags
+// +cue-gen:CircuitBreaker:groupName:resilience.policy.opensergo.io
+// +cue-gen:CircuitBreaker:version:v1alpha1
+// +cue-gen:CircuitBreaker:annotations:helm.sh/resource-policy=keep
+// +cue-gen:CircuitBreaker:subresource:status
+// +cue-gen:CircuitBreaker:scope:Namespaced
+// +cue-gen:CircuitBreaker:resource:categories=opensergo-io
+// +cue-gen:CircuitBreaker:preserveUnknownFields:false
+// -->
+//
+// <!-- go code generation tags
+// +kubetype-gen
+// +kubetype-gen:groupVersion=resilience.policy.opensergo.io/v1alpha1
+// +genclient
+// +k8s:deepcopy-gen=true
+// -->
+message CircuitBreaker {
+  io.opensergo.core.v1alpha1.Selector selector = 1;
 
+  message Config {
+
+    message SlowRequest {
+      google.protobuf.Duration latency = 1;
+    }
+
+    message ErrorRequest {
+      // Or semantic
+        repeated string conditions = 1;
+    }
+
+    message Recovery {
+      uint32 probe_count = 1;
+    }
+
+    oneof strategy_type {
+      SlowRequest slow_request = 1;
+      ErrorRequest error_request = 2;
+    }
+
+    uint32 abnormal_percent = 3;
+    google.protobuf.Duration interval = 4;
+    google.protobuf.Duration breaking_interval = 5;
+    uint32 min_requests = 6;
+    Recovery recovery = 7;
+  }
+
+  Config config = 2;
+  // The fallback action when the circuit breaker works.
+  io.opensergo.policy.v1alpha1.FallbackAction action = 3;
+}
 
