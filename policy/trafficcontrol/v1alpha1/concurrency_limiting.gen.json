@@ -1,0 +1,202 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "",
+    "version": "v1alpha1"
+  },
+  "components": {
+    "schemas": {
+      "io.opensergo.core.v1alpha1.RouteSelector": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "description": "route name",
+            "type": "string"
+          }
+        }
+      },
+      "io.opensergo.core.v1alpha1.Selector": {
+        "description": "The combined items in every field have AND semantic.",
+        "type": "object",
+        "properties": {
+          "routes": {
+            "description": "OR semantic 1. When specified, it will select the matching routes for the matching workloads. 2. When omitted, a) if the data plane is gateway, it will selector all routes of matching data plane. b) if the data is sidecar of proxyless, to be discussed.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/io.opensergo.core.v1alpha1.RouteSelector"
+            }
+          },
+          "workloads": {
+            "description": "OR semantic 1. When specified, it will select the matching workloads in the config namespace. 2. When omitted, it will selector all workloads in the config namespace. 3. When the config namespace is admin namespace, the above cases will extend to all namespaces.",
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/io.opensergo.core.v1alpha1.WorkloadSelector"
+            }
+          }
+        }
+      },
+      "io.opensergo.core.v1alpha1.WorkloadSelector": {
+        "type": "object",
+        "properties": {
+          "labels": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "io.opensergo.policy.trafficcontrol.v1alpha1.ConcurrencyLimiting": {
+        "description": "\u003c!-- crd generation tags +cue-gen:ConcurrencyLimiting:groupName:trafficcontrol.policy.istio.io +cue-gen:ConcurrencyLimiting:version:v1alpha1 +cue-gen:ConcurrencyLimiting:annotations:helm.sh/resource-policy=keep +cue-gen:ConcurrencyLimiting:subresource:status +cue-gen:ConcurrencyLimiting:scope:Namespaced +cue-gen:ConcurrencyLimiting:resource:categories=opensergo-io +cue-gen:ConcurrencyLimiting:preserveUnknownFields:false --\u003e",
+        "type": "object",
+        "properties": {
+          "selector": {
+            "$ref": "#/components/schemas/io.opensergo.core.v1alpha1.Selector"
+          },
+          "config": {
+            "$ref": "#/components/schemas/io.opensergo.policy.trafficcontrol.v1alpha1.ConcurrencyLimiting.Config"
+          },
+          "action": {
+            "$ref": "#/components/schemas/io.opensergo.policy.v1alpha1.FallbackAction"
+          }
+        }
+      },
+      "io.opensergo.policy.trafficcontrol.v1alpha1.ConcurrencyLimiting.Config": {
+        "type": "object",
+        "properties": {
+          "scope": {
+            "$ref": "#/components/schemas/io.opensergo.policy.trafficcontrol.v1alpha1.Scope"
+          },
+          "maxConcurrency": {
+            "type": "integer"
+          }
+        }
+      },
+      "io.opensergo.policy.trafficcontrol.v1alpha1.Scope": {
+        "type": "string",
+        "enum": [
+          "LOCAL",
+          "GLOBAL",
+          "GLOBAL_TO_LOCAL"
+        ]
+      },
+      "io.opensergo.policy.v1alpha1.FallbackAction": {
+        "type": "object",
+        "oneOf": [
+          {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "http"
+                  ],
+                  "properties": {
+                    "http": {
+                      "$ref": "#/components/schemas/io.opensergo.policy.v1alpha1.FallbackAction.HTTPFallback"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "required": [
+              "http"
+            ],
+            "properties": {
+              "http": {
+                "$ref": "#/components/schemas/io.opensergo.policy.v1alpha1.FallbackAction.HTTPFallback"
+              }
+            }
+          }
+        ]
+      },
+      "io.opensergo.policy.v1alpha1.FallbackAction.HTTPFallback": {
+        "type": "object",
+        "oneOf": [
+          {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "customResponse"
+                  ],
+                  "properties": {
+                    "customResponse": {
+                      "$ref": "#/components/schemas/io.opensergo.policy.v1alpha1.FallbackAction.HTTPFallback.HTTPCustomResponse"
+                    }
+                  }
+                },
+                {
+                  "required": [
+                    "redirect"
+                  ],
+                  "properties": {
+                    "redirect": {
+                      "$ref": "#/components/schemas/io.opensergo.policy.v1alpha1.FallbackAction.HTTPFallback.HTTPRedirect"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "required": [
+              "customResponse"
+            ],
+            "properties": {
+              "customResponse": {
+                "$ref": "#/components/schemas/io.opensergo.policy.v1alpha1.FallbackAction.HTTPFallback.HTTPCustomResponse"
+              }
+            }
+          },
+          {
+            "required": [
+              "redirect"
+            ],
+            "properties": {
+              "redirect": {
+                "$ref": "#/components/schemas/io.opensergo.policy.v1alpha1.FallbackAction.HTTPFallback.HTTPRedirect"
+              }
+            }
+          }
+        ]
+      },
+      "io.opensergo.policy.v1alpha1.FallbackAction.HTTPFallback.HTTPCustomResponse": {
+        "type": "object",
+        "properties": {
+          "statusCode": {
+            "type": "integer"
+          },
+          "bodyEncoding": {
+            "$ref": "#/components/schemas/io.opensergo.policy.v1alpha1.FallbackAction.HTTPFallback.HTTPCustomResponse.BodyEncoding"
+          },
+          "body": {
+            "type": "string"
+          },
+          "responseHeadersToAdd": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "io.opensergo.policy.v1alpha1.FallbackAction.HTTPFallback.HTTPCustomResponse.BodyEncoding": {
+        "type": "string",
+        "enum": [
+          "TEXT",
+          "JSON"
+        ]
+      },
+      "io.opensergo.policy.v1alpha1.FallbackAction.HTTPFallback.HTTPRedirect": {
+        "type": "object",
+        "properties": {
+          "redirectUrl": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "",
+    "version": "v1alpha1"
+  },
+  "components": {
+    "schemas": {
+      "io.opensergo.policy.trafficcontrol.v1alpha1.Scope": {
+        "type": "string",
+        "enum": [
+          "LOCAL",
+          "GLOBAL",
+          "GLOBAL_TO_LOCAL"
+        ]
+      }
+    }
+  }
+}
