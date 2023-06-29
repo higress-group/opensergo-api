@@ -27,7 +27,7 @@ var _ = math.Inf
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
 // <!-- crd generation tags
-// +cue-gen:ConcurrencyLimiting:groupName:trafficcontrol.policy.istio.io
+// +cue-gen:ConcurrencyLimiting:groupName:trafficcontrol.policy.opensergo.io
 // +cue-gen:ConcurrencyLimiting:version:v1alpha1
 // +cue-gen:ConcurrencyLimiting:annotations:helm.sh/resource-policy=keep
 // +cue-gen:ConcurrencyLimiting:subresource:status
@@ -38,7 +38,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 //
 // <!-- go code generation tags
 // +kubetype-gen
-// +kubetype-gen:groupVersion=trafficcontrol.policy.istio.io/v1alpha1
+// +kubetype-gen:groupVersion=trafficcontrol.policy.opensergo.io/v1alpha1
 // +genclient
 // +k8s:deepcopy-gen=true
 // -->
