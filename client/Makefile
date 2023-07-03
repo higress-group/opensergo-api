@@ -28,8 +28,7 @@ comma := ,
 
 # source packages to scan for kubetype-gen tags
 kube_source_packages = $(subst $(space),$(empty), \
-	opensergo.io/api/policy/trafficcontrol/v1alpha1, \
-	opensergo.io/api/policy/resilience/v1alpha1 \
+	opensergo.io/api/policy/v1alpha1 \
 	)
 
 # base output package for generated files
@@ -39,8 +38,7 @@ kube_api_base_package = $(kube_base_output_package)/apis
 # source packages to scan for kubernetes generator tags, e.g. deepcopy-gen, client-gen, etc.
 # these should correspond to the output packages from kubetype-gen
 kube_api_packages = $(subst $(space),$(empty), \
-	$(kube_api_base_package)/policy/trafficcontrol/v1alpha1, \
-	$(kube_api_base_package)/policy/resilience/v1alpha1 \
+	$(kube_api_base_package)/policy/v1alpha1 \
 	)
 # base output package used by kubernetes client-gen
 kube_clientset_package = $(kube_base_output_package)/clientset

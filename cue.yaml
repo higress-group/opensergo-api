@@ -7,7 +7,7 @@ openapi:
   fieldFilter: "min.*|max.*"
 
 directories:
-  policy/trafficcontrol/v1alpha1:
+  policy/v1alpha1:
     - mode: perFile
 
 

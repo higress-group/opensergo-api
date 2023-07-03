@@ -18,6 +18,15 @@ package io.opensergo.policy.v1alpha1;
 
 option go_package = "opensergo.io/api/policy/v1alpha1";
 
+enum Scope {
+  // Single instance.
+  LOCAL = 0;
+  // The whole cluster.
+  GLOBAL = 1;
+
+  GLOBAL_TO_LOCAL = 2;
+}
+
 message FallbackAction {
 
   message HTTPFallback {
