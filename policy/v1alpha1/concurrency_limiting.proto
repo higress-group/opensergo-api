@@ -16,7 +16,6 @@ syntax = "proto3";
 
 import "core/v1alpha1/core.proto";
 import "policy/v1alpha1/common.proto";
-import "policy/trafficcontrol/v1alpha1/common.proto";
 
 package io.opensergo.policy.v1alpha1;
 
