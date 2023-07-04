@@ -3,11 +3,11 @@ module opensergo.io/api
 go 1.18
 
 require (
-	github.com/golang/protobuf v1.5.3
-	google.golang.org/protobuf v1.31.0
-	istio.io/api v1.19.0-alpha.1
-	k8s.io/apimachinery v0.27.3
-	k8s.io/client-go v0.27.3
+	github.com/golang/protobuf v1.5.2
+	google.golang.org/protobuf v1.28.0
+	istio.io/api v0.0.0-20221013011440-bc935762d2b9
+	k8s.io/apimachinery v0.24.2
+	k8s.io/client-go v0.24.2
 )
 
 require (
