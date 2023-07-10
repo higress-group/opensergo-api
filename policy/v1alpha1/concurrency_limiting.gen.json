@@ -47,7 +47,7 @@
         }
       },
       "io.opensergo.policy.v1alpha1.ConcurrencyLimiting": {
-        "description": "\u003c!-- crd generation tags +cue-gen:ConcurrencyLimiting:groupName:policy.opensergo.io +cue-gen:ConcurrencyLimiting:version:v1alpha1 +cue-gen:ConcurrencyLimiting:annotations:helm.sh/resource-policy=keep +cue-gen:ConcurrencyLimiting:subresource:status +cue-gen:ConcurrencyLimiting:scope:Namespaced +cue-gen:ConcurrencyLimiting:resource:categories=opensergo-io +cue-gen:ConcurrencyLimiting:preserveUnknownFields:false --\u003e",
+        "description": "\u003c!-- crd generation tags +cue-gen:ConcurrencyLimiting:groupName:policy.opensergo.io +cue-gen:ConcurrencyLimiting:version:v1alpha1 +cue-gen:ConcurrencyLimiting:storageVersion +cue-gen:ConcurrencyLimiting:annotations:helm.sh/resource-policy=keep +cue-gen:ConcurrencyLimiting:subresource:status +cue-gen:ConcurrencyLimiting:scope:Namespaced +cue-gen:ConcurrencyLimiting:resource:categories=opensergo-io +cue-gen:ConcurrencyLimiting:preserveUnknownFields:false --\u003e",
         "type": "object",
         "properties": {
           "selector": {

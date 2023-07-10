@@ -39,6 +39,7 @@ const (
 // <!-- crd generation tags
 // +cue-gen:CircuitBreaker:groupName:policy.opensergo.io
 // +cue-gen:CircuitBreaker:version:v1alpha1
+// +cue-gen:CircuitBreaker:storageVersion
 // +cue-gen:CircuitBreaker:annotations:helm.sh/resource-policy=keep
 // +cue-gen:CircuitBreaker:subresource:status
 // +cue-gen:CircuitBreaker:scope:Namespaced

@@ -38,6 +38,7 @@ const (
 // <!-- crd generation tags
 // +cue-gen:ConcurrencyLimiting:groupName:policy.opensergo.io
 // +cue-gen:ConcurrencyLimiting:version:v1alpha1
+// +cue-gen:ConcurrencyLimiting:storageVersion
 // +cue-gen:ConcurrencyLimiting:annotations:helm.sh/resource-policy=keep
 // +cue-gen:ConcurrencyLimiting:subresource:status
 // +cue-gen:ConcurrencyLimiting:scope:Namespaced

@@ -47,7 +47,7 @@
         }
       },
       "io.opensergo.policy.v1alpha1.CircuitBreaker": {
-        "description": "\u003c!-- crd generation tags +cue-gen:CircuitBreaker:groupName:policy.opensergo.io +cue-gen:CircuitBreaker:version:v1alpha1 +cue-gen:CircuitBreaker:annotations:helm.sh/resource-policy=keep +cue-gen:CircuitBreaker:subresource:status +cue-gen:CircuitBreaker:scope:Namespaced +cue-gen:CircuitBreaker:resource:categories=opensergo-io +cue-gen:CircuitBreaker:preserveUnknownFields:false --\u003e",
+        "description": "\u003c!-- crd generation tags +cue-gen:CircuitBreaker:groupName:policy.opensergo.io +cue-gen:CircuitBreaker:version:v1alpha1 +cue-gen:CircuitBreaker:storageVersion +cue-gen:CircuitBreaker:annotations:helm.sh/resource-policy=keep +cue-gen:CircuitBreaker:subresource:status +cue-gen:CircuitBreaker:scope:Namespaced +cue-gen:CircuitBreaker:resource:categories=opensergo-io +cue-gen:CircuitBreaker:preserveUnknownFields:false --\u003e",
         "type": "object",
         "properties": {
           "selector": {

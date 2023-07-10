@@ -164,7 +164,7 @@
         }
       },
       "io.opensergo.policy.v1alpha1.RateLimiting": {
-        "description": "\u003c!-- crd generation tags +cue-gen:RateLimiting:groupName:policy.opensergo.io +cue-gen:RateLimiting:version:v1alpha1 +cue-gen:RateLimiting:annotations:helm.sh/resource-policy=keep +cue-gen:RateLimiting:subresource:status +cue-gen:RateLimiting:scope:Namespaced +cue-gen:RateLimiting:resource:categories=opensergo-io +cue-gen:RateLimiting:preserveUnknownFields:false --\u003e",
+        "description": "\u003c!-- crd generation tags +cue-gen:RateLimiting:groupName:policy.opensergo.io +cue-gen:RateLimiting:version:v1alpha1 +cue-gen:RateLimiting:storageVersion +cue-gen:RateLimiting:annotations:helm.sh/resource-policy=keep +cue-gen:RateLimiting:subresource:status +cue-gen:RateLimiting:scope:Namespaced +cue-gen:RateLimiting:resource:categories=opensergo-io +cue-gen:RateLimiting:preserveUnknownFields:false --\u003e",
         "type": "object",
         "properties": {
           "selector": {
