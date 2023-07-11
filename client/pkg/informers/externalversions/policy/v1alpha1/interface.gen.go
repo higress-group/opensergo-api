@@ -24,10 +24,10 @@ import (
 type Interface interface {
 	// CircuitBreakers returns a CircuitBreakerInformer.
 	CircuitBreakers() CircuitBreakerInformer
-	// ConcurrencyLimitings returns a ConcurrencyLimitingInformer.
-	ConcurrencyLimitings() ConcurrencyLimitingInformer
-	// RateLimitings returns a RateLimitingInformer.
-	RateLimitings() RateLimitingInformer
+	// ConcurrencyLimits returns a ConcurrencyLimitInformer.
+	ConcurrencyLimits() ConcurrencyLimitInformer
+	// RateLimits returns a RateLimitInformer.
+	RateLimits() RateLimitInformer
 }
 
 type version struct {
@@ -46,12 +46,12 @@ func (v *version) CircuitBreakers() CircuitBreakerInformer {
 	return &circuitBreakerInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
-// ConcurrencyLimitings returns a ConcurrencyLimitingInformer.
-func (v *version) ConcurrencyLimitings() ConcurrencyLimitingInformer {
-	return &concurrencyLimitingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+// ConcurrencyLimits returns a ConcurrencyLimitInformer.
+func (v *version) ConcurrencyLimits() ConcurrencyLimitInformer {
+	return &concurrencyLimitInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
-// RateLimitings returns a RateLimitingInformer.
-func (v *version) RateLimitings() RateLimitingInformer {
-	return &rateLimitingInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
+// RateLimits returns a RateLimitInformer.
+func (v *version) RateLimits() RateLimitInformer {
+	return &rateLimitInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }

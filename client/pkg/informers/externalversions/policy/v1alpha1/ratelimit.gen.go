@@ -30,59 +30,59 @@ import (
 	v1alpha1 "opensergo.io/api/client/pkg/listers/policy/v1alpha1"
 )
 
-// ConcurrencyLimitingInformer provides access to a shared informer and lister for
-// ConcurrencyLimitings.
-type ConcurrencyLimitingInformer interface {
+// RateLimitInformer provides access to a shared informer and lister for
+// RateLimits.
+type RateLimitInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.ConcurrencyLimitingLister
+	Lister() v1alpha1.RateLimitLister
 }
 
-type concurrencyLimitingInformer struct {
+type rateLimitInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 	namespace        string
 }
 
-// NewConcurrencyLimitingInformer constructs a new informer for ConcurrencyLimiting type.
+// NewRateLimitInformer constructs a new informer for RateLimit type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewConcurrencyLimitingInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredConcurrencyLimitingInformer(client, namespace, resyncPeriod, indexers, nil)
+func NewRateLimitInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredRateLimitInformer(client, namespace, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredConcurrencyLimitingInformer constructs a new informer for ConcurrencyLimiting type.
+// NewFilteredRateLimitInformer constructs a new informer for RateLimit type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredConcurrencyLimitingInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredRateLimitInformer(client versioned.Interface, namespace string, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.PolicyV1alpha1().ConcurrencyLimitings(namespace).List(context.TODO(), options)
+				return client.PolicyV1alpha1().RateLimits(namespace).List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.PolicyV1alpha1().ConcurrencyLimitings(namespace).Watch(context.TODO(), options)
+				return client.PolicyV1alpha1().RateLimits(namespace).Watch(context.TODO(), options)
 			},
 		},
-		&policyv1alpha1.ConcurrencyLimiting{},
+		&policyv1alpha1.RateLimit{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *concurrencyLimitingInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredConcurrencyLimitingInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *rateLimitInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredRateLimitInformer(client, f.namespace, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *concurrencyLimitingInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&policyv1alpha1.ConcurrencyLimiting{}, f.defaultInformer)
+func (f *rateLimitInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&policyv1alpha1.RateLimit{}, f.defaultInformer)
 }
 
-func (f *concurrencyLimitingInformer) Lister() v1alpha1.ConcurrencyLimitingLister {
-	return v1alpha1.NewConcurrencyLimitingLister(f.Informer().GetIndexer())
+func (f *rateLimitInformer) Lister() v1alpha1.RateLimitLister {
+	return v1alpha1.NewRateLimitLister(f.Informer().GetIndexer())
 }

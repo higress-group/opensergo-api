@@ -24,18 +24,18 @@ type CircuitBreakerListerExpansion interface{}
 // CircuitBreakerNamespaceLister.
 type CircuitBreakerNamespaceListerExpansion interface{}
 
-// ConcurrencyLimitingListerExpansion allows custom methods to be added to
-// ConcurrencyLimitingLister.
-type ConcurrencyLimitingListerExpansion interface{}
+// ConcurrencyLimitListerExpansion allows custom methods to be added to
+// ConcurrencyLimitLister.
+type ConcurrencyLimitListerExpansion interface{}
 
-// ConcurrencyLimitingNamespaceListerExpansion allows custom methods to be added to
-// ConcurrencyLimitingNamespaceLister.
-type ConcurrencyLimitingNamespaceListerExpansion interface{}
+// ConcurrencyLimitNamespaceListerExpansion allows custom methods to be added to
+// ConcurrencyLimitNamespaceLister.
+type ConcurrencyLimitNamespaceListerExpansion interface{}
 
-// RateLimitingListerExpansion allows custom methods to be added to
-// RateLimitingLister.
-type RateLimitingListerExpansion interface{}
+// RateLimitListerExpansion allows custom methods to be added to
+// RateLimitLister.
+type RateLimitListerExpansion interface{}
 
-// RateLimitingNamespaceListerExpansion allows custom methods to be added to
-// RateLimitingNamespaceLister.
-type RateLimitingNamespaceListerExpansion interface{}
+// RateLimitNamespaceListerExpansion allows custom methods to be added to
+// RateLimitNamespaceLister.
+type RateLimitNamespaceListerExpansion interface{}

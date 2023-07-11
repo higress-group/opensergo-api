@@ -43,10 +43,10 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&CircuitBreaker{},
 		&CircuitBreakerList{},
-		&ConcurrencyLimiting{},
-		&ConcurrencyLimitingList{},
-		&RateLimiting{},
-		&RateLimitingList{},
+		&ConcurrencyLimit{},
+		&ConcurrencyLimitList{},
+		&RateLimit{},
+		&RateLimitList{},
 	)
 	v1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil

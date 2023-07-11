@@ -22,12 +22,13 @@ import (
 	policyv1alpha1 "opensergo.io/api/policy/v1alpha1"
 )
 
-// please upgrade the proto package
+//
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // <!-- crd generation tags
 // +cue-gen:CircuitBreaker:groupName:policy.opensergo.io
 // +cue-gen:CircuitBreaker:version:v1alpha1
+// +cue-gen:CircuitBreaker:storageVersion
 // +cue-gen:CircuitBreaker:annotations:helm.sh/resource-policy=keep
 // +cue-gen:CircuitBreaker:subresource:status
 // +cue-gen:CircuitBreaker:scope:Namespaced
@@ -63,17 +64,18 @@ type CircuitBreakerList struct {
 	Items       []*CircuitBreaker `json:"items" protobuf:"bytes,2,rep,name=items"`
 }
 
-// please upgrade the proto package
+//
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // <!-- crd generation tags
-// +cue-gen:ConcurrencyLimiting:groupName:policy.opensergo.io
-// +cue-gen:ConcurrencyLimiting:version:v1alpha1
-// +cue-gen:ConcurrencyLimiting:annotations:helm.sh/resource-policy=keep
-// +cue-gen:ConcurrencyLimiting:subresource:status
-// +cue-gen:ConcurrencyLimiting:scope:Namespaced
-// +cue-gen:ConcurrencyLimiting:resource:categories=opensergo-io
-// +cue-gen:ConcurrencyLimiting:preserveUnknownFields:false
+// +cue-gen:ConcurrencyLimit:groupName:policy.opensergo.io
+// +cue-gen:ConcurrencyLimit:version:v1alpha1
+// +cue-gen:ConcurrencyLimit:storageVersion
+// +cue-gen:ConcurrencyLimit:annotations:helm.sh/resource-policy=keep
+// +cue-gen:ConcurrencyLimit:subresource:status
+// +cue-gen:ConcurrencyLimit:scope:Namespaced
+// +cue-gen:ConcurrencyLimit:resource:categories=opensergo-io
+// +cue-gen:ConcurrencyLimit:preserveUnknownFields:false
 // -->
 //
 // <!-- go code generation tags
@@ -82,39 +84,40 @@ type CircuitBreakerList struct {
 // +genclient
 // +k8s:deepcopy-gen=true
 // -->
-type ConcurrencyLimiting struct {
+type ConcurrencyLimit struct {
 	v1.TypeMeta `json:",inline"`
 	// +optional
 	v1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
 	// Spec defines the implementation of this definition.
 	// +optional
-	Spec policyv1alpha1.ConcurrencyLimiting `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec policyv1alpha1.ConcurrencyLimit `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 
 	Status metav1alpha1.IstioStatus `json:"status"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// ConcurrencyLimitingList is a collection of ConcurrencyLimitings.
-type ConcurrencyLimitingList struct {
+// ConcurrencyLimitList is a collection of ConcurrencyLimits.
+type ConcurrencyLimitList struct {
 	v1.TypeMeta `json:",inline"`
 	// +optional
 	v1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Items       []*ConcurrencyLimiting `json:"items" protobuf:"bytes,2,rep,name=items"`
+	Items       []*ConcurrencyLimit `json:"items" protobuf:"bytes,2,rep,name=items"`
 }
 
-// please upgrade the proto package
+//
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // <!-- crd generation tags
-// +cue-gen:RateLimiting:groupName:policy.opensergo.io
-// +cue-gen:RateLimiting:version:v1alpha1
-// +cue-gen:RateLimiting:annotations:helm.sh/resource-policy=keep
-// +cue-gen:RateLimiting:subresource:status
-// +cue-gen:RateLimiting:scope:Namespaced
-// +cue-gen:RateLimiting:resource:categories=opensergo-io
-// +cue-gen:RateLimiting:preserveUnknownFields:false
+// +cue-gen:RateLimit:groupName:policy.opensergo.io
+// +cue-gen:RateLimit:version:v1alpha1
+// +cue-gen:RateLimit:storageVersion
+// +cue-gen:RateLimit:annotations:helm.sh/resource-policy=keep
+// +cue-gen:RateLimit:subresource:status
+// +cue-gen:RateLimit:scope:Namespaced
+// +cue-gen:RateLimit:resource:categories=opensergo-io
+// +cue-gen:RateLimit:preserveUnknownFields:false
 // -->
 //
 // <!-- go code generation tags
@@ -123,24 +126,24 @@ type ConcurrencyLimitingList struct {
 // +genclient
 // +k8s:deepcopy-gen=true
 // -->
-type RateLimiting struct {
+type RateLimit struct {
 	v1.TypeMeta `json:",inline"`
 	// +optional
 	v1.ObjectMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
 
 	// Spec defines the implementation of this definition.
 	// +optional
-	Spec policyv1alpha1.RateLimiting `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
+	Spec policyv1alpha1.RateLimit `json:"spec,omitempty" protobuf:"bytes,2,opt,name=spec"`
 
 	Status metav1alpha1.IstioStatus `json:"status"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// RateLimitingList is a collection of RateLimitings.
-type RateLimitingList struct {
+// RateLimitList is a collection of RateLimits.
+type RateLimitList struct {
 	v1.TypeMeta `json:",inline"`
 	// +optional
 	v1.ListMeta `json:"metadata,omitempty" protobuf:"bytes,1,opt,name=metadata"`
-	Items       []*RateLimiting `json:"items" protobuf:"bytes,2,rep,name=items"`
+	Items       []*RateLimit `json:"items" protobuf:"bytes,2,rep,name=items"`
 }

@@ -53,10 +53,10 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	// Group=policy.opensergo.io, Version=v1alpha1
 	case v1alpha1.SchemeGroupVersion.WithResource("circuitbreakers"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Policy().V1alpha1().CircuitBreakers().Informer()}, nil
-	case v1alpha1.SchemeGroupVersion.WithResource("concurrencylimitings"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Policy().V1alpha1().ConcurrencyLimitings().Informer()}, nil
-	case v1alpha1.SchemeGroupVersion.WithResource("ratelimitings"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Policy().V1alpha1().RateLimitings().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("concurrencylimits"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Policy().V1alpha1().ConcurrencyLimits().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("ratelimits"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Policy().V1alpha1().RateLimits().Informer()}, nil
 
 	}
 

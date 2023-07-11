@@ -18,6 +18,6 @@ package v1alpha1
 
 type CircuitBreakerExpansion interface{}
 
-type ConcurrencyLimitingExpansion interface{}
+type ConcurrencyLimitExpansion interface{}
 
-type RateLimitingExpansion interface{}
+type RateLimitExpansion interface{}

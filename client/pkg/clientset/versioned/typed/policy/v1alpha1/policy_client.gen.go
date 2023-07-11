@@ -27,8 +27,8 @@ import (
 type PolicyV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	CircuitBreakersGetter
-	ConcurrencyLimitingsGetter
-	RateLimitingsGetter
+	ConcurrencyLimitsGetter
+	RateLimitsGetter
 }
 
 // PolicyV1alpha1Client is used to interact with features provided by the policy.opensergo.io group.
@@ -40,12 +40,12 @@ func (c *PolicyV1alpha1Client) CircuitBreakers(namespace string) CircuitBreakerI
 	return newCircuitBreakers(c, namespace)
 }
 
-func (c *PolicyV1alpha1Client) ConcurrencyLimitings(namespace string) ConcurrencyLimitingInterface {
-	return newConcurrencyLimitings(c, namespace)
+func (c *PolicyV1alpha1Client) ConcurrencyLimits(namespace string) ConcurrencyLimitInterface {
+	return newConcurrencyLimits(c, namespace)
 }
 
-func (c *PolicyV1alpha1Client) RateLimitings(namespace string) RateLimitingInterface {
-	return newRateLimitings(c, namespace)
+func (c *PolicyV1alpha1Client) RateLimits(namespace string) RateLimitInterface {
+	return newRateLimits(c, namespace)
 }
 
 // NewForConfig creates a new PolicyV1alpha1Client for the given config.

@@ -30,12 +30,12 @@ func (c *FakePolicyV1alpha1) CircuitBreakers(namespace string) v1alpha1.CircuitB
 	return &FakeCircuitBreakers{c, namespace}
 }
 
-func (c *FakePolicyV1alpha1) ConcurrencyLimitings(namespace string) v1alpha1.ConcurrencyLimitingInterface {
-	return &FakeConcurrencyLimitings{c, namespace}
+func (c *FakePolicyV1alpha1) ConcurrencyLimits(namespace string) v1alpha1.ConcurrencyLimitInterface {
+	return &FakeConcurrencyLimits{c, namespace}
 }
 
-func (c *FakePolicyV1alpha1) RateLimitings(namespace string) v1alpha1.RateLimitingInterface {
-	return &FakeRateLimitings{c, namespace}
+func (c *FakePolicyV1alpha1) RateLimits(namespace string) v1alpha1.RateLimitInterface {
+	return &FakeRateLimits{c, namespace}
 }
 
 // RESTClient returns a RESTClient that is used to communicate
