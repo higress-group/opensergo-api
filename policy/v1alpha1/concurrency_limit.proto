@@ -23,14 +23,14 @@ option go_package = "opensergo.io/api/policy/v1alpha1";
 
 //
 // <!-- crd generation tags
-// +cue-gen:ConcurrencyLimiting:groupName:policy.opensergo.io
-// +cue-gen:ConcurrencyLimiting:version:v1alpha1
-// +cue-gen:ConcurrencyLimiting:storageVersion
-// +cue-gen:ConcurrencyLimiting:annotations:helm.sh/resource-policy=keep
-// +cue-gen:ConcurrencyLimiting:subresource:status
-// +cue-gen:ConcurrencyLimiting:scope:Namespaced
-// +cue-gen:ConcurrencyLimiting:resource:categories=opensergo-io
-// +cue-gen:ConcurrencyLimiting:preserveUnknownFields:false
+// +cue-gen:ConcurrencyLimit:groupName:policy.opensergo.io
+// +cue-gen:ConcurrencyLimit:version:v1alpha1
+// +cue-gen:ConcurrencyLimit:storageVersion
+// +cue-gen:ConcurrencyLimit:annotations:helm.sh/resource-policy=keep
+// +cue-gen:ConcurrencyLimit:subresource:status
+// +cue-gen:ConcurrencyLimit:scope:Namespaced
+// +cue-gen:ConcurrencyLimit:resource:categories=opensergo-io
+// +cue-gen:ConcurrencyLimit:preserveUnknownFields:false
 // -->
 //
 // <!-- go code generation tags
@@ -39,7 +39,7 @@ option go_package = "opensergo.io/api/policy/v1alpha1";
 // +genclient
 // +k8s:deepcopy-gen=true
 // -->
-message ConcurrencyLimiting {
+message ConcurrencyLimit {
 
   io.opensergo.core.v1alpha1.Selector selector = 1;
 

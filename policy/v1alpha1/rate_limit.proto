@@ -25,14 +25,14 @@ option go_package = "opensergo.io/api/policy/v1alpha1";
 
 //
 // <!-- crd generation tags
-// +cue-gen:RateLimiting:groupName:policy.opensergo.io
-// +cue-gen:RateLimiting:version:v1alpha1
-// +cue-gen:RateLimiting:storageVersion
-// +cue-gen:RateLimiting:annotations:helm.sh/resource-policy=keep
-// +cue-gen:RateLimiting:subresource:status
-// +cue-gen:RateLimiting:scope:Namespaced
-// +cue-gen:RateLimiting:resource:categories=opensergo-io
-// +cue-gen:RateLimiting:preserveUnknownFields:false
+// +cue-gen:RateLimit:groupName:policy.opensergo.io
+// +cue-gen:RateLimit:version:v1alpha1
+// +cue-gen:RateLimit:storageVersion
+// +cue-gen:RateLimit:annotations:helm.sh/resource-policy=keep
+// +cue-gen:RateLimit:subresource:status
+// +cue-gen:RateLimit:scope:Namespaced
+// +cue-gen:RateLimit:resource:categories=opensergo-io
+// +cue-gen:RateLimit:preserveUnknownFields:false
 // -->
 //
 // <!-- go code generation tags
@@ -41,7 +41,7 @@ option go_package = "opensergo.io/api/policy/v1alpha1";
 // +genclient
 // +k8s:deepcopy-gen=true
 // -->
-message RateLimiting {
+message RateLimit {
   io.opensergo.core.v1alpha1.Selector selector = 1;
 
   message Config {

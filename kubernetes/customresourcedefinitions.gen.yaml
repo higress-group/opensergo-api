@@ -157,16 +157,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     "helm.sh/resource-policy": keep
-  name: concurrencylimitings.policy.opensergo.io
+  name: concurrencylimits.policy.opensergo.io
 spec:
   group: policy.opensergo.io
   names:
     categories:
     - opensergo-io
-    kind: ConcurrencyLimiting
-    listKind: ConcurrencyLimitingList
-    plural: concurrencylimitings
-    singular: concurrencylimiting
+    kind: ConcurrencyLimit
+    listKind: ConcurrencyLimitList
+    plural: concurrencylimits
+    singular: concurrencylimit
   scope: Namespaced
   versions:
   - name: v1alpha1
@@ -283,16 +283,16 @@ kind: CustomResourceDefinition
 metadata:
   annotations:
     "helm.sh/resource-policy": keep
-  name: ratelimitings.policy.opensergo.io
+  name: ratelimits.policy.opensergo.io
 spec:
   group: policy.opensergo.io
   names:
     categories:
     - opensergo-io
-    kind: RateLimiting
-    listKind: RateLimitingList
-    plural: ratelimitings
-    singular: ratelimiting
+    kind: RateLimit
+    listKind: RateLimitList
+    plural: ratelimits
+    singular: ratelimit
   scope: Namespaced
   versions:
   - name: v1alpha1
