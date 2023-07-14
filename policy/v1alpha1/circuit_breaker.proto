@@ -18,7 +18,7 @@ package io.opensergo.policy.v1alpha1;
 
 import "core/v1alpha1/core.proto";
 import "policy/v1alpha1/common.proto";
-
+import "google/protobuf/wrappers.proto";
 import "google/protobuf/duration.proto";
 
 option go_package = "opensergo.io/api/policy/v1alpha1";
@@ -64,10 +64,10 @@ message CircuitBreaker {
       ErrorRequest error_request = 2;
     }
 
-    uint32 abnormal_percent = 3;
+    google.protobuf.UInt32Value abnormal_percent = 3;
     google.protobuf.Duration interval = 4;
     google.protobuf.Duration breaking_interval = 5;
-    uint32 min_requests = 6;
+    google.protobuf.UInt32Value min_requests = 6;
     Recovery recovery = 7;
   }
 

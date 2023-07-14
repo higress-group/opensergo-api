@@ -18,8 +18,8 @@ package io.opensergo.policy.v1alpha1;
 
 import "core/v1alpha1/core.proto";
 import "policy/v1alpha1/common.proto";
-
 import "google/protobuf/duration.proto";
+import "google/protobuf/wrappers.proto";
 
 option go_package = "opensergo.io/api/policy/v1alpha1";
 
@@ -48,9 +48,9 @@ message RateLimit {
     Scope scope = 1;
 
     // The max requests can pass within the window.
-    uint64 limit = 2;
+    google.protobuf.UInt64Value limit = 2;
     // The max requests can pass instantly.
-    uint64 burst = 3;
+    google.protobuf.UInt64Value burst = 3;
     // The window in which the max requests can pass
     google.protobuf.Duration interval = 4;
   }

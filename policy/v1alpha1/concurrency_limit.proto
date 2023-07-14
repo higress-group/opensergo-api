@@ -16,6 +16,7 @@ syntax = "proto3";
 
 import "core/v1alpha1/core.proto";
 import "policy/v1alpha1/common.proto";
+import "google/protobuf/wrappers.proto";
 
 package io.opensergo.policy.v1alpha1;
 
@@ -46,7 +47,7 @@ message ConcurrencyLimit {
   message Config {
     Scope scope = 1;
 
-    uint64 max_concurrency = 2;
+    google.protobuf.UInt64Value max_concurrency = 2;
   }
 
   // The config for concurrency limiting.
