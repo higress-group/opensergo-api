@@ -65,7 +65,8 @@
         "type": "object",
         "properties": {
           "abnormalPercent": {
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
           },
           "interval": {
             "type": "string"
@@ -74,7 +75,8 @@
             "type": "string"
           },
           "minRequests": {
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
           },
           "recovery": {
             "$ref": "#/components/schemas/io.opensergo.policy.v1alpha1.CircuitBreaker.Config.Recovery"

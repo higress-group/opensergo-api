@@ -68,7 +68,8 @@
             "$ref": "#/components/schemas/io.opensergo.policy.v1alpha1.Scope"
           },
           "maxConcurrency": {
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
           }
         }
       },

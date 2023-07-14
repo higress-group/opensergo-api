@@ -186,11 +186,13 @@
           },
           "limit": {
             "description": "The max requests can pass within the window.",
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
           },
           "burst": {
             "description": "The max requests can pass instantly.",
-            "type": "integer"
+            "type": "integer",
+            "nullable": true
           },
           "interval": {
             "description": "The window in which the max requests can pass",

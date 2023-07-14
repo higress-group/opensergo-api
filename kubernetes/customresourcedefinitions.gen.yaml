@@ -97,6 +97,7 @@ spec:
                   - errorRequest
                 properties:
                   abnormalPercent:
+                    nullable: true
                     type: integer
                   breakingInterval:
                     type: string
@@ -110,6 +111,7 @@ spec:
                   interval:
                     type: string
                   minRequests:
+                    nullable: true
                     type: integer
                   recovery:
                     properties:
@@ -240,6 +242,7 @@ spec:
                 description: The config for concurrency limiting.
                 properties:
                   maxConcurrency:
+                    nullable: true
                     type: integer
                   scope:
                     enum:
@@ -367,11 +370,13 @@ spec:
                 properties:
                   burst:
                     description: The max requests can pass instantly.
+                    nullable: true
                     type: integer
                   interval:
                     type: string
                   limit:
                     description: The max requests can pass within the window.
+                    nullable: true
                     type: integer
                   scope:
                     enum:
